@@ -1,4 +1,4 @@
-1. Related to his bug report https://github.com/prisma/prisma/issues/10901
+1. Related to this bug report https://github.com/prisma/prisma/issues/10901
 2. You'll need docker for this repo
 3. Copy over .env.example to .env
    1. change as you need
