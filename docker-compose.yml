@@ -5,7 +5,7 @@ services:
     image: mcr.microsoft.com/mssql/server:2019-latest
     restart: always
     ports:
-      - "1438:1433"
+      - "1433:1433"
     environment:
       SA_PASSWORD: yourStrong(!)Password
       ACCEPT_EULA: Y
@@ -18,7 +18,7 @@ services:
     volumes:
       - .:/usr/src/app
     ports:
-      - "3002:3000"
-      - "5556:5555"
+      - "3000:3000"
+      - "5555:5555"
     depends_on:
       - database
