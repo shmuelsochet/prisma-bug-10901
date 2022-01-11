@@ -1,0 +1,25 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl"]
+}
+
+datasource db {
+  provider = "sqlserver"
+  url      = env("DATABASE_URL")
+}
+
+model Person {
+  id         Int       @id @default(autoincrement())
+  name       String?
+  followers  Follows[] @relation("follower")
+  following  Follows[] @relation("following")
+}
+
+model Follows {
+  follower    Person @relation("follower", fields: [followerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  followerId  Int
+  following   Person @relation("following", fields: [followingId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  followingId Int
+
+  @@id([followerId, followingId])
+}
